@@ -1,15 +1,13 @@
 let sumLargestNumbers = function(data) {
-  let numberCrunch = [];
+  let first = 0;
+  let second = 0;
   for (item of data) {
-    if (numberCrunch[0] == undefined) {
-      numberCrunch.push(item);
-    }
-    else if (item > numberCrunch[0]) {
-      numberCrunch.pop();
-      numberCrunch.push(item);
+    if (item >= first) {
+      second = first;
+      first = item;
     }
   }
-  return numberCrunch[0];
+  return first + second;
 };
 
 console.log(sumLargestNumbers([1, 10]));
@@ -21,7 +19,3 @@ console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
 //  11
 //  5
 //  126
-
-// Currently returning the largest number in an array.
-// Find second largest number.
-// Add the two and return the sum.
