@@ -1,14 +1,13 @@
 // Exercise: determine which instructor has the longest name.
 
 const instructorWithLongestName = function(instructors) {
-    let longestName = instructors[0];
+  let longestName = instructors[0];
   for (let instructor of instructors) {
     if (instructor["name"].length > longestName["name"].length) {
       longestName = instructor;
     }
   }
   return longestName;
-
 };
 
 console.log(instructorWithLongestName([
