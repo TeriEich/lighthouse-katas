@@ -5,7 +5,7 @@
 
 const urlEncode = function(text) {
   let encodedText = "";
-  for (let char of text) {
+  for (let char of text.trim()) {
     if (char === " ") {
       encodedText += "%20";
     }
