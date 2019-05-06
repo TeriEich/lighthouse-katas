@@ -4,7 +4,16 @@
 
 
 const urlEncode = function(text) {
-
+  let encodedText = "";
+  for (let char of text) {
+    if (char === " ") {
+      encodedText += "%20";
+    }
+    else {
+      encodedText += char;
+    }
+  }
+  return encodedText;
 };
 
 console.log(urlEncode("Lighthouse Labs"));
