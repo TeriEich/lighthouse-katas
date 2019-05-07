@@ -9,3 +9,6 @@ console.log(camelCase("loopy lighthouse"));
 console.log(camelCase("supercalifragalisticexpialidocious"));
 
 // Expected Output:
+// thisIsAString
+// loopyLighthouse
+// supercalifragalisticexpialidocious
