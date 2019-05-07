@@ -1,7 +1,8 @@
 // Exercise: Convert normal text to camelCase.
 
 let camelCase = function(input) {
-  // Your code here
+  let str = input.split(" ");
+  return str;
 };
 
 console.log(camelCase("this is a string"));
