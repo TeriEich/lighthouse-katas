@@ -1,7 +1,12 @@
 // Exercise: Generate a multiplication table for the values from 1 to the provided number.
 
 const multiplicationTable = function(maxValue) {
-  // Your code here
+  let row = "";
+  for (let i = 1; i <= maxValue; i++) {
+    let product = i * maxValue;
+    row += product + " ";
+  }
+  return row;
 };
 
 console.log(multiplicationTable(1));
