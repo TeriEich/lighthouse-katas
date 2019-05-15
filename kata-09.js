@@ -6,7 +6,34 @@ let talkingCalendar = function(date) {
   let months = ["January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"];
   let dateMonth = months[(date[5] + date[6]) - 1];
-  return dateMonth;
+  let dateYear = date[0] + date[1] + date[2] + date[3];
+  let dateDay;
+
+  if (date[8] === "0") {
+    dateDay = date[9];
+  }
+  else {
+    dateDay = date[8] + date[9];
+  }
+
+  switch (dateDay) {
+    case "1":
+    case "21":
+    case "31":
+      dateDay += "st";
+      break;
+    case "2":
+    case "22":
+      dateDay += "nd";
+      break;
+    case "3":
+    case "23":
+      dateDay += "rd";
+      break;
+    default:
+      dateDay += "th";
+  }
+  return dateMonth + " " + dateDay + ", " + dateYear;
 };
 
 console.log(talkingCalendar("2017/12/02"));
