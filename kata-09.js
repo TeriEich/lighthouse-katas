@@ -3,6 +3,10 @@
 // like December 2nd, 2017.
 
 let talkingCalendar = function(date) {
+  let months = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+  let dateMonth = months[(date[5] + date[6]) - 1];
+  return dateMonth;
 };
 
 console.log(talkingCalendar("2017/12/02"));
