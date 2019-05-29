@@ -19,10 +19,12 @@
 const organizeInstructors = function(instructors) {
   let courses = {};
   for (const instructor of instructors) {
-    courses[instructor.course] = [];
-  }
-  for (const instructor of instructors) {
-    courses[instructor.course].push(instructor.name);
+    if (instructor.course in courses) {
+      courses[instructor.course].push(instructor.name);
+    }
+    else {
+      courses[instructor.course] = [instructor.name];
+    }
   }
   return courses;
 };
