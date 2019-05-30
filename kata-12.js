@@ -8,11 +8,11 @@
 // 3. upper, lower
 
 const makeCase = function(input, style) {
-  let output = "";
   if (typeof style === "string") {
    style = [style];
   }
   for (let n = 0; n < style.length; n++) {
+  let output = "";
     for (let i = 0; i < input.length; i++) {
       let letter = input[i];
       let space = letter.match(/ /gi);
@@ -94,8 +94,9 @@ const makeCase = function(input, style) {
           break;
       }
     }
+    input = output;
   }
-  return output;
+  return input;
 }
 
 console.log(makeCase("this is a string", "camel"));
