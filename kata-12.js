@@ -9,85 +9,90 @@
 
 const makeCase = function(input, style) {
   let output = "";
-  for (let i = 0; i < input.length; i++) {
-    let letter = input[i];
-    let space = letter.match(/ /gi);
-    let vowel = letter.match(/a|e|i|o|u/gi);
-    switch (style) {
-      case "camel":
-        if (space) {
-          let nextLetter = input[i+1];
-          output += nextLetter.toUpperCase();
-          i++;
-        }
-        else if (input[i-1] !== " ") {
-          output += letter;
-        }
-        break;
-      case "pascal":
-        if (space) {
-          let nextLetter = input[i+1];
-          output += nextLetter.toUpperCase();
-          i++;
-        }
-        else if (i === 0) {
+  if (typeof style === "string") {
+   style = [style];
+  }
+  for (let n = 0; n < style.length; n++) {
+    for (let i = 0; i < input.length; i++) {
+      let letter = input[i];
+      let space = letter.match(/ /gi);
+      let vowel = letter.match(/a|e|i|o|u/gi);
+      switch (style[n]) {
+        case "camel":
+          if (space) {
+            let nextLetter = input[i+1];
+            output += nextLetter.toUpperCase();
+            i++;
+          }
+          else if (input[i-1] !== " ") {
+            output += letter;
+          }
+          break;
+        case "pascal":
+          if (space) {
+            let nextLetter = input[i+1];
+            output += nextLetter.toUpperCase();
+            i++;
+          }
+          else if (i === 0) {
+            output += letter.toUpperCase();
+          }
+          else if (input[i-1] !== " ") {
+            output += letter;
+          }
+          break;
+        case "snake":
+          if (space) {
+            output += "_";
+          }
+          else {
+            output += letter;
+          }
+          break;
+        case "kebab":
+          if (space) {
+            output += "-";
+          }
+          else {
+            output += letter;
+          }
+          break;
+        case "title":
+          if (space) {
+            let nextLetter = input[i+1];
+            output += letter;
+            output += nextLetter.toUpperCase();
+          }
+          else if (i === 0) {
+            output += letter.toUpperCase();
+          }
+          else if (input[i-1] !== " ") {
+            output += letter;
+          }
+          break;
+        case "vowel":
+          if (vowel) {
+            output += letter.toUpperCase();
+          }
+          else {
+            output += letter;
+          }
+          break;
+        case "consonant":
+          if (!vowel) {
+            output += letter.toUpperCase();
+          }
+          else {
+            output += letter;
+          }
+          break;
+        case "upper":
           output += letter.toUpperCase();
-        }
-        else if (input[i-1] !== " ") {
-          output += letter;
-        }
-        break;
-      case "snake":
-        if (space) {
-          output += "_";
-        }
-        else {
-          output += letter;
-        }
-        break;
-      case "kebab":
-        if (space) {
-          output += "-";
-        }
-        else {
-          output += letter;
-        }
-        break;
-      case "title":
-        if (space) {
-          let nextLetter = input[i+1];
-          output += letter;
-          output += nextLetter.toUpperCase();
-        }
-        else if (i === 0) {
-          output += letter.toUpperCase();
-        }
-        else if (input[i-1] !== " ") {
-          output += letter;
-        }
-        break;
-      case "vowel":
-        if (vowel) {
-          output += letter.toUpperCase();
-        }
-        else {
-          output += letter;
-        }
-        break;
-      case "consonant":
-        if (!vowel) {
-          output += letter.toUpperCase();
-        }
-        else {
-          output += letter;
-        }
-        break;
-      case "upper":
-        output += letter.toUpperCase();
-        break;
-      case "lower":
-        output += letter.toLowerCase();
-        break;
+          break;
+        case "lower":
+          output += letter.toLowerCase();
+          break;
+      }
     }
   }
   return output;
