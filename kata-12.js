@@ -11,12 +11,15 @@ const makeCase = function(input, style) {
   if (typeof style === "string") {
    style = [style];
   }
+
   for (let n = 0; n < style.length; n++) {
-  let output = "";
+    let output = "";
+
     for (let i = 0; i < input.length; i++) {
       let letter = input[i];
       let space = letter.match(/ /gi);
       let vowel = letter.match(/a|e|i|o|u/gi);
+
       switch (style[n]) {
         case "camel":
           if (space) {
